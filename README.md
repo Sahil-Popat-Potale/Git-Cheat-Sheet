@@ -242,6 +242,187 @@ git rebase branch-name
 git rebase --abort
 ```
 
+
+Here are the remaining Git commands organized into proper categories and formatted to continue from the previous cheat sheet:
+
+---
+
+## 🖼️ Tagging and Version Control
+
+### **Delete a Tag**
+```bash
+git tag -d tag-name
+```
+**How it works**: This command deletes a tag locally from your repository. The tag will still exist on the remote until you delete it there as well.
+
+### **Push All Tags to the Remote Repository**
+```bash
+git push origin --tags
+```
+**How it works**: The `git push --tags` command pushes all local tags to the remote repository, making them available to everyone.
+
+### **Delete a Tag from the Remote Repository**
+```bash
+git push origin --delete tag tag-name
+```
+**How it works**: This command removes a tag from the remote repository so that it is no longer available to others.
+
+---
+
+## 🧹 Cleaning Up
+
+### **Remove Untracked Files**
+```bash
+git clean -f
+```
+**How it works**: The `git clean` command removes untracked files from the working directory, helping you clean up unnecessary files. Use `-f` to force the deletion.
+
+### **Dry Run to See What Would Be Removed**
+```bash
+git clean -n
+```
+**How it works**: This command performs a dry run, showing you which untracked files would be deleted without actually deleting them.
+
+---
+
+## 🔀 Rewriting History
+
+### **Amend the Last Commit**
+```bash
+git commit --amend -m "Updated commit message"
+```
+**How it works**: The `git commit --amend` command allows you to modify the most recent commit. You can change the commit message or add new changes.
+
+### **Rebase Interactively**
+```bash
+git rebase -i commit_hash
+```
+**How it works**: This command opens an interactive rebase session, where you can modify, combine, or delete previous commits.
+
+---
+
+## 🕹️ Cherry-Picking
+
+### **Apply a Specific Commit to the Current Branch**
+```bash
+git cherry-pick commit_hash
+```
+**How it works**: The `git cherry-pick` command allows you to apply changes from a specific commit on one branch to another branch.
+
+---
+
+## 🚨 Conflict Resolution
+
+### **Show Conflicts After a Merge**
+```bash
+git status
+```
+**How it works**: After a merge conflict, running `git status` will show the files that have conflicts. You can then manually resolve them.
+
+### **Mark Conflicts as Resolved**
+```bash
+git add filename.txt
+```
+**How it works**: After resolving conflicts in a file, add the file to the staging area with `git add` to mark it as resolved.
+
+### **Continue After Resolving Conflicts**
+```bash
+git merge --continue
+```
+**How it works**: This command continues the merge process after you've resolved any conflicts.
+
+### **Abort a Merge**
+```bash
+git merge --abort
+```
+**How it works**: This command aborts a merge in progress and returns the repository to its previous state before the merge started.
+
+---
+
+## ⚙️ Advanced Workflows
+
+### **Squash Commits**
+```bash
+git rebase -i HEAD~n
+```
+**How it works**: The `git rebase -i` command lets you combine several commits into one. Replace `n` with the number of commits you'd like to squash.
+
+### **Bisect to Find Buggy Commits**
+```bash
+git bisect start
+git bisect bad
+git bisect good commit_hash
+```
+**How it works**: The `git bisect` command performs a binary search to find which commit introduced a bug. Mark the bad and good commits, and Git will help you locate the culprit.
+
+---
+
+## 🔒 Security and Maintenance
+
+### **Sign a Commit**
+```bash
+git commit -S -m "Signed commit message"
+```
+**How it works**: This command signs your commits with a GPG key, ensuring their authenticity and integrity.
+
+### **Verify Signed Commits**
+```bash
+git log --show-signature
+```
+**How it works**: This command checks the signatures of past commits, confirming whether they were signed and valid.
+
+---
+
+## 📊 Git Aliases
+
+### **Create a Git Alias**
+```bash
+git config --global alias.co checkout
+```
+**How it works**: The `git config` command lets you create shortcuts for frequently used Git commands. Here, `git co` becomes shorthand for `git checkout`.
+
+### **List All Aliases**
+```bash
+git config --get-regexp alias
+```
+**How it works**: This command lists all your Git aliases, showing you the shortcuts you've set up for quicker workflows.
+
+---
+
+## 🗂️ Submodules
+
+### **Add a Submodule**
+```bash
+git submodule add https://github.com/username/repository.git
+```
+**How it works**: The `git submodule add` command includes another Git repository as a submodule within your project, allowing you to track it as a separate module.
+
+### **Initialize Submodules**
+```bash
+git submodule init
+```
+**How it works**: This command initializes all submodules in your project after they have been cloned.
+
+### **Update Submodules**
+```bash
+git submodule update
+```
+**How it works**: The `git submodule update` command updates all submodules to their latest commits, ensuring they are in sync with the parent project.
+
+---
+
+## 🏗️ Hooks
+
+### **Create a Pre-Commit Hook**
+```bash
+# Navigate to .git/hooks/ directory
+cd .git/hooks/
+
+# Create a new pre-commit hook
+touch pre-commit
+```
+**How it works**: This command creates a pre-commit hook script in the `.git/hooks/` directory. Pre-commit hooks run before each commit to check code quality or perform other tasks.
+
 ---
 
 ## 🎯 Conclusion
@@ -249,5 +430,3 @@ git rebase --abort
 This Git cheat sheet covers the essential commands you'll need for most workflows. Keep it handy as a quick reference guide, and enhance your Git skills with ease! If you need more advanced commands or explanations, don't hesitate to dive deeper into the Git documentation or explore additional resources.
 
 ---
-
-This Markdown will render beautifully on GitHub and similar platforms, making your Git commands both functional and visually appealing in your `README.md` file.
